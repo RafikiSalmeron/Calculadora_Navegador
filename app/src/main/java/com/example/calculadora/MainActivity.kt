@@ -131,7 +131,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun suma(view: View) {
-        resultado = valor1.toDouble() + resultado
+        when (op) {
+            "s" -> {resultado = resultado + tvResultado.text.toString().toDouble()
+
+            }
+            "d" -> {
+                resultado = resultado / tvResultado.text.toString().toDouble()
+
+            }
+            "r" -> resultado = resultado - tvResultado.text.toString().toDouble()
+            "m" -> {
+                resultado = resultado * tvResultado.text.toString().toDouble()
+
+            }
+        }
+        if(ft == 0){
+            resultado = valor1.toDouble() + resultado
+            ft=1
+        }
+
 
         tvrecorrido.text = tvrecorrido.text.toString() + tvResultado.text + "+"
         valor1 = ""
@@ -177,10 +195,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun resta(view: View) {
-        if (resultado != 0.0) {
-            resultado = resultado - valor1.toDouble()
-        } else {
-            resultado = valor1.toDouble() - resultado
+        when (op) {
+            "s" -> resultado = resultado + tvResultado.text.toString().toDouble()
+            "d" -> {
+                resultado = resultado / tvResultado.text.toString().toDouble()
+
+            }
+            "r" -> resultado = resultado - tvResultado.text.toString().toDouble()
+            "m" -> {
+                resultado = resultado * tvResultado.text.toString().toDouble()
+
+            }
+        }
+        if(ft == 0){
+            if (resultado != 0.0) {
+                resultado = resultado - valor1.toDouble()
+                ft=1
+            } else {
+                resultado = valor1.toDouble() - resultado
+                ft=1
+            }
         }
 
         tvrecorrido.text = tvrecorrido.text.toString() + tvResultado.text + "-"
@@ -190,18 +224,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun dividir(view: View) {
-        if (op.equals("d")) {
-            ft = 1
+
+        when (op) {
+            "s" -> resultado = resultado + tvResultado.text.toString().toDouble()
+            "d" -> {
+                resultado = resultado / tvResultado.text.toString().toDouble()
+
+            }
+            "r" -> resultado = resultado - tvResultado.text.toString().toDouble()
+            "m" -> {
+                resultado = resultado * tvResultado.text.toString().toDouble()
+
+            }
         }
+
+
 
         if (ft == 0) {
             resultado = 1.0
             resultado = tvResultado.text.toString().toDouble() / resultado
         }//else if(ft==2){
         //resultado = resultado / tvResultado.text.toString().toDouble()
-        else {
-            resultado = resultado / tvResultado.text.toString().toDouble()
-        }
+
 
 
 
@@ -213,15 +257,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun multi(view: View) {
+        when (op) {
+            "s" -> resultado = resultado + tvResultado.text.toString().toDouble()
+            "d" -> {
+                resultado = resultado / tvResultado.text.toString().toDouble()
+
+            }
+            "r" -> resultado = resultado - tvResultado.text.toString().toDouble()
+            "m" -> {
+                resultado = resultado * tvResultado.text.toString().toDouble()
+
+            }
+        }
         if (ft == 0) {
             resultado = 1.0
+            resultado = tvResultado.text.toString().toDouble() * resultado
         }
 
-        resultado = tvResultado.text.toString().toDouble() * resultado
+
 
         tvrecorrido.text = tvrecorrido.text.toString() + tvResultado.text + "*"
         valor1 = ""
         tvResultado.setText(valor1)
+
         op = "m"
         ft = 1
     }
@@ -229,17 +287,23 @@ class MainActivity : AppCompatActivity() {
 
     fun igual(view: View) {
         when (op) {
-            "s" -> resultado = resultado + valor1.toDouble()
+            "s" -> {resultado = resultado + valor1.toDouble()
+                    ft=0
+            }
             "d" -> {
                 resultado = resultado / tvResultado.text.toString().toDouble()
                 ft = 0
             }
-            "r" -> resultado = resultado - tvResultado.text.toString().toDouble()
+            "r" -> {
+                resultado = resultado - tvResultado.text.toString().toDouble()
+                ft=0
+            }
             "m" -> {
                 resultado = resultado * tvResultado.text.toString().toDouble()
                 ft = 0
             }
         }
+        op="x"
         // valor1 = resultado.toString()
         memoria = resultado
         tvrecorrido.text = ""
